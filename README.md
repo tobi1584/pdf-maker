@@ -1,189 +1,166 @@
+﻿<div align="center">
 
-# ApuntesPDF
+# 📚 ApuntesPDF
 
-ApuntesPDF es una aplicación web gratuita para abrir, leer, subrayar, anotar y editar documentos PDF, especialmente diseñada para estudiar apuntes, temarios y oposiciones.
+**Tus apuntes, tus anotaciones, tu navegador.**
 
-## Objetivo
+Una aplicación web gratuita y en español para leer, resaltar y anotar documentos PDF.
+Pensada para estudiar apuntes, temarios y oposiciones con tus archivos en local.
 
-Crear un editor de PDF moderno, rápido, intuitivo y completo, similar a las herramientas de anotación de Brave, Drawboard PDF y PDF-XChange Editor.
+![Estado: en desarrollo](https://img.shields.io/badge/estado-en_desarrollo-f59e0b?style=flat-square)
+![React](https://img.shields.io/badge/React-19-149eca?style=flat-square)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?style=flat-square)
+![Vite](https://img.shields.io/badge/Vite-7-646cff?style=flat-square)
 
-La aplicación debe funcionar en navegadores modernos como Brave, Chrome, Edge y Firefox.
+[Qué puedes hacer](#-qué-puedes-hacer) · [Instalación](#-instalación) · [Cómo usarlo](#-cómo-usarlo) · [Desarrollo](#-desarrollo)
 
-El usuario debe poder trabajar con documentos PDF de cientos de páginas sin problemas de rendimiento.
+</div>
 
-## Tecnologías
+---
 
-- React
-- TypeScript
-- Vite
-- PDF.js para visualizar los documentos PDF.
-- pdf-lib para exportar PDFs con anotaciones.
-- Zustand para gestionar el estado de la aplicación.
-- Tailwind CSS para diseñar la interfaz.
-- IndexedDB para guardar proyectos y anotaciones localmente.
-- Vitest para pruebas automatizadas.
+## ✨ Qué puedes hacer
 
-Se pueden incorporar otras bibliotecas cuando exista una justificación técnica.
+Abre un PDF, marca las ideas importantes, añade explicaciones y descarga una copia anotada para consultarla en otros lectores.
 
-## Características principales
+| Función | Qué permite |
+| --- | --- |
+| **Lectura de PDF** | Abrir archivos desde el ordenador o arrastrarlos a la aplicación, desplazarse entre páginas y saltar a una página concreta. |
+| **Zoom y navegación** | Ampliar del 25 % al 300 %, ajustar al ancho, girar la vista y mover el documento con la herramienta Mano. |
+| **Resaltado y subrayado** | Marcar palabras seleccionando el texto real del PDF. |
+| **Rotulador libre** | Dibujar trazos sobre las páginas con color, grosor y opacidad configurables. |
+| **Cuadros de texto** | Escribir notas, editar su contenido, cambiar el tamaño de letra y redimensionar los cuadros. |
+| **Flechas y rectángulos** | Señalar conceptos y enmarcar partes del documento. |
+| **Edición de anotaciones** | Seleccionar, mover, cambiar propiedades, borrar, deshacer y rehacer. |
+| **Colores personalizados** | Añadir colores y conservar los cinco últimos en el navegador. |
+| **Modo claro y oscuro** | Elegir la apariencia y recordar la preferencia entre sesiones. |
+| **Exportación** | Descargar una copia del PDF con las anotaciones incorporadas. |
 
-### 1. Gestión de documentos
+Las anotaciones se almacenan en coordenadas del PDF, independientes del zoom. El visor tiene en cuenta la rotación y renderiza las páginas cercanas a la zona visible bajo demanda.
 
-- Abrir archivos PDF desde el ordenador.
-- Arrastrar y soltar archivos PDF.
-- Mostrar documentos de múltiples páginas.
-- Navegar entre páginas.
-- Introducir directamente el número de página.
-- Zoom manual y automático.
-- Ajustar al ancho de pantalla.
-- Ajustar página completa.
-- Desplazamiento vertical continuo.
-- Rotar páginas para visualización.
-- Mostrar el número total de páginas.
+> [!IMPORTANT]
+> **Exportar un PDF no equivale a guardar un proyecto editable.** Las anotaciones descargadas quedan aplanadas sobre el documento y no se recuperan como objetos editables al volver a abrirlo. El guardado de proyectos y el autoguardado entre sesiones todavía no están implementados.
 
-### 2. Herramientas de anotación
+## 🔒 Privacidad
 
-#### Selección de texto
-- Seleccionar texto real del PDF.
-- Copiar texto seleccionado.
-- Subrayar texto seleccionado.
-- Resaltar texto con diferentes colores.
-- Tachado de texto.
+Los documentos se procesan **localmente en tu navegador**: no se suben a servidores. La aplicación no requiere cuentas ni registro, no incluye pagos ni publicidad y no utiliza APIs de IA externas.
 
-#### Rotulador libre
-- Pintar libremente encima del PDF.
-- Permitir subrayar por encima o fuera de las letras.
-- Configurar colores.
-- Configurar grosor.
-- Configurar transparencia.
-- Utilizar ratón, pantalla táctil o lápiz digital.
+El archivo original de tu ordenador no se sobrescribe: la exportación genera una copia con el sufijo `-anotado.pdf`. Las preferencias de tema y los colores personalizados se guardan en el almacenamiento local del navegador; los documentos y las anotaciones de la sesión no se conservan al cerrarla.
 
-#### Escritura con teclado
-- Insertar cuadros de texto en cualquier posición.
-- Modificar contenido posteriormente.
-- Cambiar tamaño de letra.
-- Cambiar color.
-- Mover cuadros de texto.
-- Eliminar cuadros de texto.
+## 🚀 Instalación
 
-#### Dibujos y formas
-- Flechas.
-- Líneas rectas.
-- Rectángulos.
-- Círculos y elipses.
-- Dibujo libre.
-- Cambiar color y grosor.
-- Mover y eliminar anotaciones.
+Necesitas **Node.js 22.12 o posterior** y **npm**.
 
-### 3. Edición de anotaciones
-
-- Seleccionar anotaciones existentes.
-- Mover anotaciones.
-- Modificar sus propiedades.
-- Eliminar anotaciones individualmente.
-- Deshacer cambios.
-- Rehacer cambios.
-- Atajos de teclado.
-
-### 4. Guardado y exportación
-
-- Descargar el PDF con las anotaciones incorporadas.
-- Mantener la calidad original del documento.
-- Mantener las páginas originales.
-- Mantener el texto seleccionable siempre que sea posible.
-- Guardar las anotaciones en las coordenadas correctas.
-- Evitar desplazamientos al cambiar el zoom.
-- Permitir continuar editando un proyecto guardado.
-- Guardar automáticamente el trabajo en IndexedDB.
-- Recuperar proyectos después de cerrar el navegador.
-
-El PDF exportado debe poder visualizarse correctamente en lectores externos.
-
-### 5. Interfaz
-
-La interfaz debe ser moderna, minimalista y cómoda para estudiar durante muchas horas.
-
-Distribución:
-
-- Barra superior con herramientas principales.
-- Panel lateral opcional con miniaturas de páginas.
-- Zona central dedicada al documento.
-- Controles de navegación y zoom.
-- Selector de colores.
-- Panel de propiedades de anotaciones.
-- Modo claro y oscuro.
-- Posibilidad de ocultar paneles para ampliar el documento.
-
-Priorizar una experiencia parecida a un editor de PDF profesional, evitando menús innecesarios.
-
-## Rendimiento
-
-- Soportar PDFs grandes de 200 a 500 páginas o más.
-- Evitar renderizar todas las páginas simultáneamente.
-- Utilizar renderizado progresivo o virtualización.
-- Evitar bloqueos al hacer zoom o cambiar de página.
-- Liberar recursos de páginas que ya no se muestran.
-- Mantener las anotaciones alineadas con el documento.
-
-## Privacidad
-
-- Procesamiento local en el navegador.
-- No subir documentos a servidores externos.
-- No requerir cuentas.
-- No requerir registro.
-- No incluir suscripciones.
-- No incluir publicidad.
-- No recopilar datos personales.
-
-## Prioridades de desarrollo
-
-1. Visualizador PDF funcional.
-2. Navegación y zoom.
-3. Rotulador libre.
-4. Cuadros de texto.
-5. Flechas y figuras.
-6. Selección y edición de anotaciones.
-7. Guardado y exportación.
-8. Subrayado mediante selección de texto.
-9. Autoguardado y recuperación.
-10. Mejoras visuales y optimización.
-
-## Criterios de calidad
-
-- Código modular y mantenible.
-- Componentes reutilizables.
-- TypeScript con tipado estricto.
-- Diseño adaptable a diferentes pantallas.
-- Manejo de errores.
-- Pruebas de funcionalidades críticas.
-- No introducir dependencias innecesarias.
-
-## Estado del proyecto
-
-En desarrollo.
-
-Primera meta: disponer de una versión MVP funcional que permita abrir un PDF, dibujar anotaciones, escribir texto y exportar el documento.
-
-## Ejecutar la primera versión
-
-Requisitos: Node.js 20 o posterior. En la carpeta del proyecto:
+Desde la carpeta del proyecto:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abre la dirección local que muestra Vite. En PowerShell con la ejecución de scripts restringida se pueden usar `npm.cmd install` y `npm.cmd run dev`.
+Abre la dirección local que muestra Vite en la terminal.
 
-La primera versión permite abrir o arrastrar un PDF, recorrer sus páginas, ampliar, ajustar al ancho y girar la vista. Incluye selección y movimiento de anotaciones, resaltado y subrayado de texto seleccionable, rotulador libre, texto editable, flechas, rectángulos, borrador, deshacer y rehacer. Para marcar palabras, elige **Resaltar texto** o **Subrayar texto** y arrastra sobre el texto del PDF. Los PDF escaneados que solo contienen imágenes no tienen texto seleccionable. El botón **Descargar PDF** incorpora las anotaciones al archivo conservando las páginas originales. Las anotaciones descargadas quedan aplanadas en el PDF. Todavía no se guardan proyectos editables entre sesiones.
+> [!TIP]
+> En Windows, si PowerShell bloquea los scripts de npm, utiliza `npm.cmd install` y `npm.cmd run dev`.
 
-Puedes ampliar el documento con **Ctrl + rueda del ratón** sobre la página. La herramienta **Mano** desplaza el documento al arrastrarlo. El botón de modo oscuro cambia la apariencia de la aplicación y recuerda la elección en este navegador.
-
-Para comprobar la versión:
+Para generar y consultar la versión de producción:
 
 ```bash
 npm run build
-npm test
+npm run preview
 ```
 
-Con el servidor de desarrollo abierto y Brave instalado, `npm run test:browser` ejecuta una prueba funcional de las herramientas y la descarga del PDF.
+La compilación se genera en `dist/`.
+
+## 📝 Cómo usarlo
+
+1. Pulsa **Abrir PDF** o arrastra un archivo a la zona del documento.
+2. Ajusta el ancho o el zoom y navega hasta la página que quieras estudiar.
+3. Elige **Resaltar texto** o **Subrayar texto**, selecciona un color y arrastra sobre las palabras.
+4. Añade trazos, flechas o rectángulos. Para crear una nota, elige **Texto** y arrastra para definir el cuadro.
+5. Usa **Seleccionar** para mover anotaciones. Haz doble clic en un texto para editarlo y arrastra su esquina durante la edición para cambiar el tamaño del cuadro.
+6. Pulsa **Descargar PDF** para obtener una copia anotada antes de cerrar la sesión.
+
+> [!NOTE]
+> El resaltado y el subrayado necesitan texto seleccionable. Los PDF escaneados que solo contienen imágenes pueden anotarse con dibujos y cuadros de texto, pero la aplicación no incorpora OCR. El borrador elimina anotaciones, no contenido original del PDF. El giro cambia la vista, no la orientación del archivo exportado.
+
+### Atajos de teclado
+
+| Atajo | Acción |
+| --- | --- |
+| `V` | Seleccionar y mover anotaciones |
+| `H` | Mano: desplazar el documento |
+| `S` | Resaltar texto |
+| `U` | Subrayar texto |
+| `P` | Rotulador |
+| `T` | Insertar texto |
+| `A` | Flecha |
+| `R` | Rectángulo |
+| `E` | Borrador |
+| `Ctrl + Z` | Deshacer |
+| `Ctrl + Y` o `Ctrl + Mayús + Z` | Rehacer |
+| `Supr` o `Retroceso` | Eliminar la anotación seleccionada |
+| `Ctrl + rueda del ratón` | Cambiar el zoom sobre el documento |
+
+En macOS, deshacer y rehacer también admiten `⌘` en lugar de `Ctrl`. Los atajos de herramientas no se activan mientras escribes en un campo de texto.
+
+## 🛠️ Desarrollo
+
+### Tecnologías
+
+| Tecnología | Uso |
+| --- | --- |
+| React + TypeScript | Interfaz y lógica de la aplicación |
+| Vite | Servidor de desarrollo y compilación |
+| PDF.js | Renderizado del PDF y capa de texto seleccionable |
+| pdf-lib | Exportación de documentos con anotaciones |
+| Zustand | Estado de anotaciones e historial de cambios |
+| Tailwind CSS + CSS | Estilos de la interfaz |
+| Vitest + Playwright | Pruebas automatizadas y comprobaciones en navegador |
+
+### Estructura del proyecto
+
+```text
+src/
+├── components/            # Iconos y componentes de interfaz
+├── features/
+│   ├── annotations/       # Capa interactiva de anotaciones
+│   └── pdf/               # Visor de páginas y selección de texto
+├── services/              # Exportación del PDF
+├── stores/                # Estado, selección e historial
+├── types/                 # Tipos de herramientas y anotaciones
+├── utils/                 # Geometría, colores y pruebas
+├── App.tsx                # Interfaz principal
+└── styles.css             # Estilos y temas
+scripts/
+└── smoke.mjs              # Prueba funcional en navegador
+```
+
+### Comprobaciones
+
+```bash
+npm test
+npm run build
+```
+
+Las pruebas automatizadas cubren geometría, colores personalizados, historial de anotaciones y exportación.
+
+Para ejecutar la prueba funcional, deja `npm run dev` activo y abre otra terminal:
+
+```bash
+npm run test:browser
+```
+
+Esta prueba usa Playwright con Brave y comprueba las herramientas, la edición de texto, el zoom, el desplazamiento, el tema y la descarga. Por defecto busca Brave en su ruta habitual de Windows y la aplicación en `http://127.0.0.1:5173/`. Puedes configurar `BRAVE_EXECUTABLE` y `APP_URL` mediante variables de entorno.
+
+## 🗺️ Próximos pasos
+
+El proyecto está en desarrollo. Las siguientes funciones son objetivos pendientes, no prestaciones de la versión actual:
+
+- [ ] Guardado y apertura de proyectos editables.
+- [ ] Autoguardado local con IndexedDB y recuperación entre sesiones.
+- [ ] Líneas, elipses y tachado de texto.
+- [ ] Panel de miniaturas y ajuste de página completa.
+- [ ] Más validación de rendimiento con documentos de cientos de páginas.
+- [ ] Ampliar las pruebas de compatibilidad entre navegadores.
+
+La prioridad es consolidar un MVP estable y seguir construyendo una alternativa sencilla, gratuita y privada para estudiar PDF.
